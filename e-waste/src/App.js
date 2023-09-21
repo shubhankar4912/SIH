@@ -1,25 +1,32 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
-import Login from './Login'
-import Register from './Register'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthContextProvider } from './context/AuthContext';
+import ProtectedRoute from './ProtectedRoute';
+import Login from './Login';
+import Register from './Register';
 import Home from './Home';
 
 function App() {
   return (
-    
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route index element={<Login/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/home" element={<Home/>}/>
-        </Routes>
-      </BrowserRouter>
+    <div>
+      <Router> {/* Wrap your application with a Router */}
+        <AuthContextProvider>
+          <Routes>
+            <Route path='/' element={<Login />} />
+            <Route path='/signup' element={<Register />} />
+            <Route
+              path='/home'
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </AuthContextProvider>
+      </Router>
     </div>
-
-  
   );
 }
 

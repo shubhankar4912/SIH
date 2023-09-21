@@ -6,8 +6,25 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import { Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import React from 'react';
 import './Home.css'
+import { UserAuth } from './context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 function Home() {
+    const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+      console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+  
     return (
 
 
@@ -48,6 +65,7 @@ function Home() {
             <div id='foot'>
                 <div >
                     <Row>
+                        <button onClick={handleLogout}></button>
                         <Col md>
                             <Row><a href="#" style={{color:'white'}}>About Us</a></Row>
                             <Row><a href="#" style={{color:'white'}}>Our Services</a></Row>
@@ -61,7 +79,7 @@ function Home() {
                         </Col>
                         <Col md>
                             <div id='Icons'>
-                                <h4 style={{textAlign:'center'},{color:'white'}}>Follow Us</h4>
+                                <h4 style={{ textAlign: 'center', color: 'white' }}>Follow Us</h4>
                                 <a href="#" style={{color:'white'}}><FontAwesomeIcon icon={faFacebook} /></a>
                                 <a href="#" style={{color:'white'}}><FontAwesomeIcon icon={faInstagram} id='insta' /></a>
                                 <a href="#" style={{color:'white'}}><FontAwesomeIcon icon={faTwitter} /></a>
