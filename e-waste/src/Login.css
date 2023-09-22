@@ -1,143 +1,232 @@
-
-.App {
-  text-align: center;
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+.ads{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #40916c;
+  padding: 30px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
 }
 
+.icon {
+  color: #2d6a4f; /* Change to your desired color */
+  
+}
 
-#header {
-  background-image: url("./background.jpg") ;
-  background-size: cover;
-  min-height: 100vh; 
+.container1{
+  
+  position: relative;
+  max-width: 850px;
+  width: 100%;
+  background: #fff;
+  padding: 40px 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  perspective: 2700px;
+}
+.container1 .cover{
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  z-index: 98;
+  transition: all 1s ease;
+  transform-origin: left;
+  transform-style: preserve-3d;
+}
+.container1 #flip:checked ~ .cover{
+  transform: rotateY(-180deg);
+}
+ .container1 .cover .front,
+ .container1 .cover .back{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.cover .back{
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.container1 .cover::before,
+.container1 .cover::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #2d6a4f;
+  opacity: 0.5;
+  z-index: 12;
+}
+.container1 .cover::after{
+  opacity: 0.3;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.container1 .cover img{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 10;
+}
+.container1 .cover .text{
+  position: absolute;
+  z-index: 130;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-
-#contain{
-  background-color: rgb(235, 231, 213);
-  size: 80%;
-  padding: 30px;
-  box-shadow: 5px 5px 4px
-  #a0a3b7;
-  border-radius: 20px;
+.cover .text .text-1,
+.cover .text .text-2{
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
 }
-
-#line{
-  width: 2px;
-  background-color: rgb(57, 50, 50);
-  margin-left: 30px;
-  margin-right: 30px;
+.cover .text .text-2{
+  font-size: 15px;
+  font-weight: 500;
 }
-
-#logo{
-  margin-right: 50px;
-  margin-left: 40px;
-  margin-top: 150px;
-  box-shadow: 5px 5px 4px
-  #a0a3b7;
-  transition: transform 0.5s;
-} 
-
-#logo:hover{
-  transform: translateY(-10px);
+.container1 .forms{
+  height: 100%;
+  width: 100%;
+  background: #fff;
 }
-
-#box{
-  width:50%;
+.container1 .form-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-#lol{
+.form-content .login-form,
+.form-content .signup-form{
+  width: calc(100% / 2 - 25px);
+}
+.forms .form-content .title{
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+.forms .form-content .title:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 25px;
+  background: #2d6a4f;
+}
+.forms .signup-form  .title:before{
+  width: 20px;
+}
+.forms .form-content .input-boxes{
+  margin-top: 30px;
+}
+.forms .form-content .input-box{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
   
-  position: relative; 
-  margin-right: 40px;
-  width: 350px;
-  height: 500px;
-  border-radius: 18px;
-  box-shadow: 5px 5px 4px
-  #a0a3b7;
-  font-family: serif;
-  padding-top: 8px;
 }
-#head{
-  height: 45px;
-  background-color: rgb(19, 188, 24);
-  color: black;
-  margin-top: 35px;
-  margin-bottom: 20px;
-  padding-top: 5px;
-}
-#login{
-  margin-top:20px ;
-  margin-bottom: 20px;
-
+.forms .form-content .input-box1{
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
   
-  width: 110px;
-    font-size: 20px;
-    padding: 4px 0;
-    background: #0d8d04;
-    border: 0;
-    border-radius: 20px;
-    margin-top: 30px;
-
-
 }
-#register{
-  width: 100px;
-  color: black;
-  font-size: medium;
- 
+.form-content .input-box input{
+  height: 100%;
+  width: calc(100% - 30px); 
+  outline: none;
+  border: none;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0,0,0,0.2); 
+  transition: all 0.3s ease;  
+}
+.form-content .input-box input:focus,
+.form-content .input-box input:valid{
+  border-color: #2d6a4f;
+}
+.form-content .input-box i{
+  position: absolute;
+  color: #2d6a4f;
+  font-size: 17px;
+  
+}
+.forms .form-content .text{
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+.forms .form-content .text a{
+  text-decoration: none;
+}
+.forms .form-content .text a:hover{
   text-decoration: underline;
 }
-#cracc{
-  margin-top:15px ;
-  margin-bottom: 8px;
+.forms .form-content .button{
+  color: #fff;
+  margin-top: 40px;
 }
-#email{
-  margin-top: 80px;
-  margin-left: 17px;
-  width: 300px;
-  text-align: left;
-  align-content: center;
-  color: black;
-  font-size: 22px;
-  font-weight: bold;
-  font-family: serif;
+.forms .form-content .button input{
+  color: #fff;
+  background: #2d6a4f;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
-#password{
-  margin-top: 30px;
-  width: 300px;
-  margin-left: 17px;
-  text-align: left;
-  color: black;
-  font-size: 22px;
-  font-weight: bold;
-  font-family: serif;
-
+.forms .form-content .button input:hover{
+  background: #2d6a4f;
 }
-#eblock{
-  background-color: #dee1e7;
-  box-shadow: 1px 1px 0px;
+.forms .form-content label{
+  color: #2d6a4f;
+  cursor: pointer;
 }
-#pblock{
-  background-color: #dee1e7;
-  box-shadow: 1px 1px 0px;
+.forms .form-content label:hover{
+  text-decoration: underline;
 }
-
-#top{
-  margin-top: -200px;
-  width: 1535px;
-  background-color: rgb(23, 162, 27);
-  height: 150px;
-  margin-bottom: 40px;
-  font-family: 'Courier New', Courier, monospace;
+.forms .form-content .login-text,
+.forms .form-content .sign-up-text{
+  text-align: center;
+  margin-top: 25px;
 }
-#heading{
-  margin-top: 100px;
+.container1 #flip{
+  display: none;
 }
-#av{
-  align-items: center;
+@media (max-width: 730px) {
+  .container1 .cover{
+    display: none;
+  }
+  .form-content .login-form,
+  .form-content .signup-form{
+    width: 100%;
+  }
+  .form-content .signup-form{
+    display: none;
+  }
+  .container1 #flip:checked ~ .forms .signup-form{
+    display: block;
+  }
+  .container1 #flip:checked ~ .forms .login-form{
+    display: none;
+  }
 }

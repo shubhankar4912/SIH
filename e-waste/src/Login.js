@@ -1,21 +1,23 @@
-import { Button, Form, Row, Col } from 'react-bootstrap'
+
 import { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
-import logo1 from "./logo1.png"
+
 import { useNavigate } from 'react-router-dom';
 import React from 'react'
 import { UserAuth } from '/Users/adityabhatt/Documents/SIH/e-waste/src/context/AuthContext.js';
-import register from './Register';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default function Register() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  
   const { signIn } = UserAuth();
+  const { createUser } = UserAuth();
 
-  const handleSubmit = async (e) => {
+  const handleSubmitL = async (e) => {
     e.preventDefault();
     setError('')
     try {
@@ -26,51 +28,107 @@ export default function Register() {
       console.log(e.message)
     }
   };
+  const handleSubmitR = async (e) => {
+    e.preventDefault();
+    setError('')
+    try {
+      await createUser(name,email, password)
+      navigate('/Home')
+    } catch (e) {
+      setError(e.message)
+      console.log(e.message)
+    }
+  };
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePass = (event) => {
+    setPassword(event.target.value);
+  };
   const navigate = useNavigate();
   return (
-    <div id="header">
-      <div id='contain'>
-        <div style={{ display: 'flex' }}>
-          <div >
-            <img id="logo" alt='clogo' src={logo1} height={80} width={400} />
+    <div className='ads'>
+    <div className="container1">
+      <input type="checkbox" id="flip" />
+      <div className="cover">
+        <div className="front">
+          <img src="../frontImg.jpg" alt="" />
+          <div className="text">
+            <span className="text-1">One solution to your<br/> every E-problem</span>
+            <span className="text-2">WattRebirth!!</span>
           </div>
-          <div id="line">
-
-          </div>
-          <div className='box' id='lol' style={{ backgroundColor: '#FFFFFF' }}>
-            <div id='head'>
-              <h3 style={{ color: 'white' }}>Sign In</h3>
-            </div>
-            <Form>
-              <Row>
-                <Col md>
-                  <div>
-                    <Form.Group controlId="formEmail" id='email' onChange={(e) => setEmail(e.target.value)}>
-                      <Form.Label >Email Address</Form.Label>
-                      <Form.Control id='eblock' type="email" placeholder="Example@email.com" />
-                    </Form.Group>
-
-                    <Form.Group controlId="formPassword" id='password' onChange={(e) => setPassword(e.target.value)}>
-                      <Form.Label >Password</Form.Label>
-                      <Form.Control id='pblock' type="password" placeholder="Password" />
-                    </Form.Group>
-                  </div>
-                </Col>
-              </Row>
-              <Row id='av'>
-                <Col>
-                  <Button variant='success' type='submit' id='login' onClick={handleSubmit}> Login </Button>
-                </Col>
-
-              
-              <Link to="/signup" id='register'>New User?</Link>
-              </Row>
-
-            </Form>
+        </div>
+        <div className="back">
+          <img className="backImg" src="../Light bulbs recycling flat vector illustration.jpg" alt="" />
+          <div className="text">
+            <span className="text-1">Welcome<br/> WattRebirth</span>
+            <span className="text-2">Let's get started</span>
           </div>
         </div>
       </div>
-
+      <div className="forms">
+        <div className="form-content">
+          <div className="login-form">
+            <div className="title">Login</div>
+            <form action="#">
+              <div className="input-boxes">
+                <div className="input-box">
+                  <i>
+                  <FontAwesomeIcon icon={faEnvelope}  />
+                  </i>
+                  <input type="text" placeholder="Enter your email" required  onChange={handleEmail}/>
+                </div>
+                <div className="input-box">
+                  <i>
+                  <FontAwesomeIcon icon={faLock}/>
+                  </i>
+                  <input type="password" placeholder="Enter your password" required onChange={handlePass} />
+                </div>
+                <div className="text"><a href="#">Forgot password?</a></div>
+                <div className="button input-box">
+                  <input type="submit" value="Submit"  onClick={handleSubmitL}/>
+                </div>
+                <div className="text sign-up-text">Don't have an account? <label htmlFor="flip">Signup now</label></div>
+              </div>
+            </form>
+          </div>
+          <div className="signup-form">
+            <div className="title">Signup</div>
+            <form action="#">
+              <div className="input-boxes">
+                <div className="input-box">
+                  <i>
+                  <FontAwesomeIcon icon={faUser} />
+                  </i>
+                  <input type="text" placeholder="Enter your name" required onChange={handleName}/>
+                </div>
+                <div className="input-box">
+                  <i>
+                  <FontAwesomeIcon icon={faEnvelope}/>
+                  </i>
+                  <input type="text" placeholder="Enter your email" required onChange={handleEmail} />
+                </div>
+                <div className="input-box">
+                  <i>
+                  <FontAwesomeIcon icon={faLock} />
+                  </i>
+                  <input type="password" placeholder="Enter your password" required  onChange={handlePass}/>
+                </div>
+                <div className="button input-box">
+                  <input type="submit" value="Submit" onClick={handleSubmitR}/>
+                </div>
+                <div className="text sign-up-text">Already have an account? <label htmlFor="flip">Login now</label></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   )
 }
