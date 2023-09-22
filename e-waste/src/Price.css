@@ -1,0 +1,38 @@
+ #body{
+  min-height: 100vh; 
+  display: flex;
+  align-items:baseline;
+  justify-content: center;
+  background: #40916c;
+  padding: 30px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+    
+}
+#pname{
+    text-align: center;
+ 
+
+}
+#dnames{
+    text-align: center;
+}
+#quantity{
+    text-align: center;
+}
+#unitprice{
+    text-align: center;
+}
+#totalprice{
+    text-align: center;
+}
+#button{
+    text-align: center;
+} 
+
+
+  
+  
+ 

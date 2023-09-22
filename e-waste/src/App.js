@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
-// import Home from './Home';
+import Price from './Price';
+import Home from './Home';
 function App() {
   return (
     <div>
@@ -21,8 +22,11 @@ function App() {
                 </ProtectedRoute>
               }
             />
+             <Route path='/Home' element={<Home/>}></Route>
+            <Route path='/Price' element={<Price/>}></Route>
           </Routes>
         </AuthContextProvider>
+        
       </Router>
     </div>
   );
