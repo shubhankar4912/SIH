@@ -4,7 +4,7 @@ import './Login.css';
 
 import { useNavigate } from 'react-router-dom';
 import React from 'react'
-import { UserAuth } from '/Users/adityabhatt/Documents/SIH/e-waste/src/context/AuthContext.js';
+import { UserAuth } from './context/AuthContext.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';

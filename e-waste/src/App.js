@@ -4,9 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
-
-import Home from './Home';
-
+// import Home from './Home';
 function App() {
   return (
     <div>
@@ -16,10 +14,10 @@ function App() {
             <Route path='/' element={<Login />} />
 
             <Route
-              path='/home'
+              path='/Login'
               element={
                 <ProtectedRoute>
-                  <Home />
+                  <Login />
                 </ProtectedRoute>
               }
             />
