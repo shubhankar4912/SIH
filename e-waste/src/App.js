@@ -15,15 +15,15 @@ function App() {
             <Route path='/' element={<Login />} />
 
             <Route
-              path='/Login'
+              path='/Home'
               element={
                 <ProtectedRoute>
-                  <Login />
+                  <Home />
                 </ProtectedRoute>
               }
             />
-             <Route path='/Home' element={<Home/>}></Route>
-            <Route path='/Price' element={<Price/>}></Route>
+             {/* <Route path='/Home' element={<Home/>}></Route> */}
+             {/* <Route path='/Price' element={<Price/>}></Route> */}
           </Routes>
         </AuthContextProvider>
         
